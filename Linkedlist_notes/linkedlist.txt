@@ -1,0 +1,13 @@
+Linked List
+
+Why do we need linked list?
+1)Dynamic Size:
+	Size of the array is fixed.
+2)Ease of insertion and deletion.
+	Inserting a new element is expensive when the number of elements exceeds the size of the array.
+Drawback:
+1)Random Access:
+	Elements needs to be accessed sequentially starting from the first node. 
+2)Extra memory:
+	Extra memory needs to be created everytime there is a new insertion
+3)Cache: Not cache friendly

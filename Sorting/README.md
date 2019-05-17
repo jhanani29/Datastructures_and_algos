@@ -1,0 +1,11 @@
+
+**Sorting Algorithm**
+
+Sorting which does not require extra space for comparision - *"in 
+place Sorting"*
+
+Sorting which needs extra space for comparision - *"not in place Sorting"*
+
+STL has sorting function. Internally it performs quick sort with the order of N*log N 
+Eg: sort(Start_address,end_address); ==> sort(a,a+10);
+

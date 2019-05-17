@@ -1,11 +1,3 @@
-/******************************************************************************
-
-Welcome to GDB Online.
-GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
-C#, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
-Code, Compile, Run and Debug online from anywhere in world.
-
-*******************************************************************************/
 #include <iostream>
 struct Node
 {
@@ -54,6 +46,23 @@ void append(struct Node** head_Ref, int new_data)
     last->next = new_node;
     return;
 }
+Node* Deletenode(Node** head_Ref, int d)
+{
+    Node* n = *head_Ref;
+    if(n->data == d)
+    {    *head_Ref = n->next; return *head_Ref;}
+    while(n->next != NULL)
+    {
+        if(n->next->data == d)
+        {
+            n->next = n->next->next;
+            return *head_Ref;
+        }
+        n = n->next;
+    }
+    return *head_Ref;
+}
+
 void printList(Node *node)
 {
     while(node != NULL)
@@ -83,8 +92,9 @@ int main()
     //printList(head);
      append(&head, 4); 
      insert(head->next, 8); 
-    printList(head);
+    //printList(head);
     Node* a = reverselist(&head);
+    Node* b = Deletenode(&head,6);
     printList(head);
     return 0;
 }

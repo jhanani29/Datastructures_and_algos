@@ -46,28 +46,28 @@ void append(struct Node** head_Ref, int new_data)
     last->next = new_node;
     return;
 }
-Node* Deletenode(Node** head_Ref, int d)
+void Deletenode(Node** head_Ref, int d)
 {
     Node* n = *head_Ref;
     if(n->data == d)
-    {    *head_Ref = n->next; return *head_Ref;}
+    {    *head_Ref = n->next; return;}
     while(n->next != NULL)
     {
         if(n->next->data == d)
         {
             n->next = n->next->next;
-            return *head_Ref;
+            return;
         }
         n = n->next;
     }
-    return *head_Ref;
+    return;
 }
 
 void printList(Node *node)
 {
     while(node != NULL)
     {
-        printf("%d", node->data);
+        printf(" %d", node->data);
         node = node->next;
     }
 }
@@ -86,15 +86,48 @@ Node* reverselist(Node** head)
     *head = prev;
     return *head;
 }
+/* Set is a container which stores unique element in a specific order. The value in the set cannot be
+modified once it is stored in the container. The value is always contant. But, it can be inserted or 
+removed from the container*/
+
+void RemoveDup(Node** head_Ref)
+{
+    Node *ptr1,*ptr2,*dup;
+    ptr1 = *head_Ref;
+    while(ptr1 != NULL && ptr1->next != NULL)
+    {
+        int d = ptr1->data;
+  
+        ptr2 = ptr1;
+        while(ptr2->next!= NULL)
+        {   
+            if(d == ptr2->next->data)
+            {
+                dup = ptr2->next;
+                ptr2->next = ptr2->next->next;
+                delete(dup);
+            }
+            else
+            ptr2 = ptr2->next;
+        }
+        ptr1 = ptr1->next;
+    }
+}
+
 int main()
 {   struct Node* head = NULL;
     push(&head, 6);
-    //printList(head);
+
      append(&head, 4); 
      insert(head->next, 8); 
     //printList(head);
     Node* a = reverselist(&head);
-    Node* b = Deletenode(&head,6);
+   // printList(head);
+    //Deletenode(&head,6);
+    push(&head, 6);
+    push(&head, 6);
+    push(&head, 8);
+    RemoveDup(&head);
     printList(head);
     return 0;
 }
